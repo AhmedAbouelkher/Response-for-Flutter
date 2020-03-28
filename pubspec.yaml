@@ -1,8 +1,7 @@
 name: ui_size_config
-description: A new Flutter package project.
+description: Flutter plugin helps you to maintain a clean looking widgets size in all available displays in which the app will be
 version: 0.0.1
-author:
-homepage:
+homepage: https://github.com/AhmedAbouelkher/UI_SizeConfig-for-Flutter
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

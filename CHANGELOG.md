@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
-
-* TODO: Describe initial release.
+## [0.0.1] - 2020-3-27
+* Simplified package initialization.
+* Added a more readable/meaningful methods names.

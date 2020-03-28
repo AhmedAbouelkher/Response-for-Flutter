@@ -1,3 +1,13 @@
+/*
+
+** Package Auther: Ahmed M. Abouelkher
+** E-mail: am303737@gmail.com
+
+* Original Author: TechieBlossom
+* Github Profile: https://github.com/TechieBlossom
+
+*/
+
 library ui_size_config;
 
 import 'package:flutter/rendering.dart';
