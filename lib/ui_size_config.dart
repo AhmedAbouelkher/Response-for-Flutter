@@ -3,9 +3,10 @@
 ** Package Author: Ahmed M. Abouelkher
 ** E-mail: am303737@gmail.com
 
-* Original Author: TechieBlossom
+* Original Author: PrateekSharma1712/TechieBlossom
 * Github Profile: https://github.com/TechieBlossom
-
+* Github Profile: https://github.com/PrateekSharma1712
+* Original blogpost: https://techieblossom.com/flutter-responsive-ui-for-learning-platform-app/
 */
 
 library ui_size_config;
@@ -129,8 +130,8 @@ class SizeConfig {
       _isPortrait = false;
       _isMobilePortrait = false;
     }
-    _blockWidth = _screenWidth / 150;
-    _blockHeight = _screenHeight / 150;
+    _blockWidth = _screenWidth / 200;
+    _blockHeight = _screenHeight / 200;
   }
 
   ///[isDevicePortrait] is helpful if you want to know whether the device orientation is
