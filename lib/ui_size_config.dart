@@ -3,10 +3,9 @@
 ** Package Author: Ahmed M. Abouelkher
 ** E-mail: am303737@gmail.com
 
-* Original Author: PrateekSharma1712/TechieBlossom
-* Github Profile: https://github.com/TechieBlossom
+* Algorithm Original Author: PrateekSharma1712/TechieBlossom
 * Github Profile: https://github.com/PrateekSharma1712
-* Original blogpost: https://techieblossom.com/flutter-responsive-ui-for-learning-platform-app/
+
 */
 
 library ui_size_config;
