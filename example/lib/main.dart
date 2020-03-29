@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_size_config/ui_size_config.dart';
-
+import 'package:ui_size_config/responsive.dart';
 /*
 The app documentation will be very helpful to know more about any Method/Function
 which I use in the package.
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
     //initializing Our Package to get data and process them from
     //the general context of the app
     //Both Child and Context is required to initialize the config process
-    return UISizeConfig(
+    return Responsive(
       child: MaterialApp(
         home: HomePage(),
       ),
@@ -71,6 +70,7 @@ class HomePage extends StatelessWidget {
             Text(
               'This is a Test Text',
               style: TextStyle(
+                //we have defined a fixed font size in pixels
                 fontSize: SizeConfig().setFontSize(24),
                 fontWeight: FontWeight.bold,
               ),

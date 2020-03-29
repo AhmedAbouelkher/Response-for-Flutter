@@ -1,5 +1,5 @@
-name: ui_size_config
-description: Flutter plugin helps to maintain a clean looking widgets size in all available displays in which the app will be
+name: responsive
+description: Flutter plugin helps to maintain a clean looking widgets size in all available displays in which the app will be.
 version: 0.0.2+3
 homepage: https://github.com/AhmedAbouelkher/UI_SizeConfig-for-Flutter
 
