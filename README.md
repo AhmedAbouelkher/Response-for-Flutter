@@ -11,7 +11,7 @@ Flutter package will help you to build  your responsive UI design as you wanted 
 
 
 ## How to use
-**First** wrap your **MaterialApp** widget with **Responsive**.
+**First** wrap your **MaterialApp** widget with **UISizeConfig**.
 
 ```dart
    UISizeConfig(
