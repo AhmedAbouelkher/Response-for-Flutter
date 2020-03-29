@@ -38,7 +38,7 @@ And that is all to be able to initialize the package. Very easy!
 
 > ***Note:*** isDevicePortrait and inMobilePortrait returns a bool (true or false).
 
-####Example Code 1
+### Example Code 1
 to set a width and height to a Container.
 
 ```dart
@@ -52,7 +52,7 @@ Container(
 > ***Note:*** the scaling process will work also in the same device in both
 in Portrait mode or in Landscape mode.
 
-####Example Code 2 
+### Example Code 2 
 to set the text size.
 
 ```dart
