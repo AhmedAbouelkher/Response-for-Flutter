@@ -57,17 +57,14 @@ class HomePage extends StatelessWidget {
               //that the app will work on.
               height: SizeConfig().setHeight(30),
             ),
-            Transform.rotate(
-              child: Container(
-                //We want the Container Widget to be 200px in width and 200px in height...
-                //across all the available displays on which the app will work on.
-                //Note: the scaling process will work also in the same device in both
-                //in Portrait mode or in Landscape mode.
-                width: SizeConfig().setWidth(200),
-                height: SizeConfig().setHeight(200),
-                color: Colors.teal,
-              ),
-              angle: 0,
+            Container(
+              //We want the Container Widget to be 200px in width and 200px in height...
+              //across all the available displays on which the app will work on.
+              //Note: the scaling process will work also in the same device in both
+              //in Portrait mode or in Landscape mode.
+              width: SizeConfig().setWidth(200),
+              height: SizeConfig().setHeight(200),
+              color: Colors.teal,
             ),
             SizedBox(
               height: SizeConfig().setHeight(30),
