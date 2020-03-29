@@ -58,7 +58,7 @@ class Responsive extends StatelessWidget {
         return OrientationBuilder(
           builder: (BuildContext context, Orientation orientation) {
             ///initializing our brain
-            SizeConfig()._init(constraints, orientation);
+            Response()._init(constraints, orientation);
             return child;
           },
         );
@@ -68,7 +68,7 @@ class Responsive extends StatelessWidget {
 }
 
 ///
-///[SizeConfig] is the main brain of the package.
+///[Response] is the main brain of the package.
 ///
 ///We are using it to calculate the geometric value of our widgets
 ///in which we define for example a specific [width] or [height] in pixels
@@ -87,7 +87,7 @@ class Responsive extends StatelessWidget {
 ///
 ///
 
-class SizeConfig {
+class Response {
   static double _screenWidth;
   static double _screenHeight;
   static double _blockWidth = 0;

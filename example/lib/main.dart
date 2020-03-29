@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ui_size_config/responsive.dart';
+import 'package:responsive/responsive.dart';
+
 /*
+
 The app documentation will be very helpful to know more about any Method/Function
 which I use in the package.
 
@@ -50,28 +52,25 @@ class HomePage extends StatelessWidget {
               //We are just want the SizedBox to be 30px in all situations and screens.
               //This helps you specifying a constant height in all modes and devices
               //that the app will work on.
-              height: SizeConfig().setHeight(30),
+              height: Response().setHeight(30),
             ),
-            Transform.rotate(
-              child: Container(
-                //We want the Container Widget to be 200px in width and 200px in height...
-                //across all the available displays on which the app will work on.
-                //Note: the scaling process will work also in the same device in both
-                //in Portrait mode or in Landscape mode.
-                width: SizeConfig().setWidth(300),
-                height: SizeConfig().setHeight(200),
-                color: Colors.teal,
-              ),
-              angle: 0,
+            Container(
+              //We want the Container Widget to be 200px in width and 200px in height...
+              //across all the available displays on which the app will work on.
+              //Note: the scaling process will work also in the same device in both
+              //in Portrait mode or in Landscape mode.
+              width: Response().setWidth(300),
+              height: Response().setHeight(200),
+              color: Colors.teal,
             ),
             SizedBox(
-              height: SizeConfig().setHeight(30),
+              height: Response().setHeight(30),
             ),
             Text(
               'This is a Test Text',
               style: TextStyle(
                 //we have defined a fixed font size in pixels
-                fontSize: SizeConfig().setFontSize(24),
+                fontSize: Response().setFontSize(24),
                 fontWeight: FontWeight.bold,
               ),
             )
@@ -80,8 +79,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-}
-
-bool ro() {
-  return SizeConfig().inMobilePortrait;
 }
