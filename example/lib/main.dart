@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:ui_size_config/ui_size_config.dart';
 
 /*
-The app documintaion will be very helpful to know more about any Method/Function
+The app documentation will be very helpful to know more about any Method/Function
 which I use in the package.
 
-If you feel confused or can't understant any part of the code, then the Package 
-Documention will be very useful.
+If you feel confused or can't understand any part of the code, then the Package
+Documentation will be very useful.
 
-You can access any Method/Class Quick Documintation:
+You can access any Method/Class Quick Documentation:
   in VS Code: By hovering with your cursor over the method/class in your code.
 
-  in Andriod Studio/IntelliJ IDEA: move the cursor pointer to the method/class and type
+  in Android Studio/IntelliJ IDEA: move the cursor pointer to the method/class and type
   on your keyboard (ctrl + q on Windows/ command + j on MacOS).
 
-You can access any Method/Class Full Detailed Documintation:
-  in VS Code and Andriod Studio/IntelliJ IDEA:  hovering with your cursor over the method/class in your code while
-  pressing (ctrl on Windows/ command on MacOS) botton then click.
+You can access any Method/Class Full Detailed Documentation:
+  in VS Code and Android Studio/IntelliJ IDEA:  hovering with your cursor over the method/class in your code while
+  pressing (ctrl on Windows/ command on MacOS) button then click.
 
 */
 
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             SizedBox(
               //We are just want the SizedBox to be 30px in all situations and screens.
-              //This helps you specifing a constant height in all modes and devices
+              //This helps you specifying a constant height in all modes and devices
               //that the app will work on.
               height: SizeConfig().setHeight(30),
             ),

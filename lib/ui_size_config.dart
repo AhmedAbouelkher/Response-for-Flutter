@@ -19,7 +19,7 @@ class UISizeConfig extends StatelessWidget {
   ///We are using it to get [constraints] and [orientation] information
   ///about the currently running app.
 
-  UISizeConfig({this.child});
+  UISizeConfig({@required this.child});
 
   ///`child` is the child widget in which we want to use our package
   ///
@@ -119,19 +119,73 @@ class SizeConfig {
 
   ///[inMobilePortrait] is helpful if you want to know whether the device you are
   ///working on a Mobile Portrait or a Tablet Portrait mode
+
   bool get inMobilePortrait => _isMobilePortrait;
 
+  ///[setWidth] uses its argument [width] to calculate the initial widget width
+  ///in pixels and from that the package can deal with all the calculation.
+  ///`setWidth`
+  /// {@tool sample}
+  ///
+  /// ```dart
+  /// Container(
+  ///   width: SizeConfig().setWidth(300),
+  ///   height: SizeConfig().setHeight(200),
+  ///   color: Colors.teal,
+  ///  ), //Container
+  /// ```
+  /// {@end-tool}
+
   double setWidth(double width) {
+    ///[width] is the widget width which you want it initially and finally be the same.
     return ((width / _blockWidth) * _blockWidth);
   }
 
+  ///[setHeight] uses its argument [height] to calculate the initial widget height
+  ///in pixels and from that the package can deal with all the calculation.
+  ///`setHeight`
+  /// {@tool sample}
+  ///
+  /// ```dart
+  /// Container(
+  ///   width: SizeConfig().setWidth(300),
+  ///   height: SizeConfig().setHeight(200),
+  ///   color: Colors.teal,
+  ///  ), //Container
+  /// ```
+  /// {@end-tool}
+  ///
+
   double setHeight(double height) {
+    ///[height] is the widget height which you want it initially and finally be the same.
     return ((height / _blockHeight) * _blockHeight);
   }
 
+  ///[setFontSize] uses its argument [fontSize] to calculate the initial text size
+  ///in pixels and from that the package can deal with all the calculation.
+  ///`setFontSize`
+  /// {@tool sample}
+  ///
+  /// ```dart
+  /// Text(
+  ///    'This is a Test Text',
+  ///     style: TextStyle(
+  ///             fontSize: SizeConfig().setFontSize(24),
+  ///             fontWeight: FontWeight.bold,
+  ///          ), //TextStyle
+  ///       ) //Text
+  /// ```
+  /// {@end-tool}
+  ///
+
   double setFontSize(double fontSize) {
+    ///[fontSize] is the text size which you want it initially and finally be the same.
     return ((fontSize / _blockHeight) * _blockHeight);
   }
+
+  ///[setImageSize] uses its argument [imageSize] to calculate the initial image size (width/height)
+  ///in pixels and from that the package can deal with all the calculation.
+  ///
 
   double setImageSize(double imageSize) {
     return ((imageSize / _blockWidth) * _blockWidth);
