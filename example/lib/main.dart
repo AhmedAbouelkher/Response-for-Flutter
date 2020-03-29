@@ -29,10 +29,6 @@ class MyApp extends StatelessWidget {
     //the general context of the app
     //Both Child and Context is required to initialize the config process
     return UISizeConfig(
-      //passing the context.
-      context: context,
-      //setting our whole material app as a child.
-      //see the documintaion if you want to know more.
       child: MaterialApp(
         home: HomePage(),
       ),
@@ -63,7 +59,7 @@ class HomePage extends StatelessWidget {
                 //across all the available displays on which the app will work on.
                 //Note: the scaling process will work also in the same device in both
                 //in Portrait mode or in Landscape mode.
-                width: SizeConfig().setWidth(200),
+                width: SizeConfig().setWidth(300),
                 height: SizeConfig().setHeight(200),
                 color: Colors.teal,
               ),

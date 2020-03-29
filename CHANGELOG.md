@@ -1,3 +1,7 @@
+## [0.0.2+3] - <Date>
+* Bug fixes
+* general performance improvements.
+
 ## [0.0.2+2] - 2020-3-28
 * Adding a full documentation to all methods and classes.
 

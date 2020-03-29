@@ -3,10 +3,9 @@
 ** Package Author: Ahmed M. Abouelkher
 ** E-mail: am303737@gmail.com
 
-* Original Author: PrateekSharma1712/TechieBlossom
-* Github Profile: https://github.com/TechieBlossom
+* Algorithm Original Author: PrateekSharma1712/TechieBlossom
 * Github Profile: https://github.com/PrateekSharma1712
-* Original blogpost: https://techieblossom.com/flutter-responsive-ui-for-learning-platform-app/
+
 */
 
 library ui_size_config;
@@ -20,30 +19,7 @@ class UISizeConfig extends StatelessWidget {
   ///We are using it to get [constraints] and [orientation] information
   ///about the currently running app.
 
-  UISizeConfig({@required this.context, @required this.child});
-
-  ///`context` is the whole app context with which we are able to get more
-  ///information about the app widgets status and more information about our
-  ///widget tree as well as our widget status in the same tree.
-  ///`context` is a requirement to enable the package to work.
-  ///
-  /// {@tool sample}
-  ///
-  /// ```dart
-  ///     UISizeConfig(
-  ///       context: context,
-  ///       child: MaterialApp(
-  ///         home: HomePage(),
-  ///       ),
-  ///     )
-  /// ```
-  /// {@end-tool}
-  ///
-  /// Still confused? Run the example app in which you can fine
-  /// a working example with full comments to teach you every step
-  /// the example: https://github.com/AhmedAbouelkher/UI_SizeConfig-for-Flutter/tree/master/example
-  ///
-  final BuildContext context;
+  UISizeConfig({this.child});
 
   ///`child` is the child widget in which we want to use our package
   ///
@@ -68,7 +44,9 @@ class UISizeConfig extends StatelessWidget {
   /// a working example with full comments to teach you every step
   /// the example: https://github.com/AhmedAbouelkher/UI_SizeConfig-for-Flutter/tree/master/example
   ///
+
   final Widget child;
+
   @override
   Widget build(BuildContext context) {
     ///[LayoutBuilder] is used to get the constraints/borders geometry of
@@ -79,6 +57,7 @@ class UISizeConfig extends StatelessWidget {
         ///the device in which the app is working on.
         return OrientationBuilder(
           builder: (BuildContext context, Orientation orientation) {
+            ///initializing our brain
             SizeConfig()._init(constraints, orientation);
             return child;
           },
