@@ -30,11 +30,11 @@ And that is all to be able to initialize the package, **Very easy!**
 
 | Name  | Description  |
 | ------------ | ------------ |
-| `ResponseUI().setWidth(double width)`  |  Sets the widget width in pixels value to be relatively constant across all different display sizes. |
-| `ResponseUI().setHeight(double height)`  | Sets the widget height in pixels value to be relatively constant across all different display sizes. |
-| `ResponseUI().setFontSize(double fontSize)`  | Sets the text size in pixels to be relativly constant on all diplays sizes. |
+| `ResponseUI().setWidth(double width)` |  Sets the widget width in pixels value to be relatively constant across all different display sizes. |
+| `ResponseUI().setHeight(double height)` | Sets the widget height in pixels value to be relatively constant across all different display sizes. |
+| `ResponseUI().setFontSize(double fontSize)` | Sets the text size in pixels to be relativly constant on all diplays sizes. |
 | `ResponseUI().isDevicePortrait` | Helpful if you want to know whether the device orientation is in Portrait or in Landscape.  |
-| `ResponseUI().inMobilePortrait`   | Helps you if you want to know whether the device you are working on a Mobile Portrait or a Tablet Portrait mode.  |
+| `ResponseUI().inMobilePortrait` | Helps you if you want to know whether the device you are working on a Mobile Portrait or a Tablet Portrait mode.  |
 
 > ***Note:*** `isDevicePortrait` and `inMobilePortrait` returns a `bool` (true or false).
 
