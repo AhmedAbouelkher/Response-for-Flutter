@@ -1,4 +1,4 @@
-## [0.0.2+4] - <Date>
+## [0.0.2+4] - <2020-3-30>
 * Renaming the package.
 * Bug fixes.
 * General performance improvements.
