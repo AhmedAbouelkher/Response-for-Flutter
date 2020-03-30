@@ -1,4 +1,4 @@
-## [0.0.2+3] - <Date>
+## [0.0.2+4] - <Date>
 * Renaming the package.
 * Bug fixes.
 * General performance improvements.

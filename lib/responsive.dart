@@ -1,13 +1,3 @@
-/*
-
-** Package Author: Ahmed M. Abouelkher
-** E-mail: am303737@gmail.com
-
-* Algorithm Original Author: PrateekSharma1712/TechieBlossom
-* Github Profile: https://github.com/PrateekSharma1712
-
-*/
-
 library responsive;
 
 import 'package:flutter/rendering.dart';
@@ -58,7 +48,7 @@ class Responsive extends StatelessWidget {
         return OrientationBuilder(
           builder: (BuildContext context, Orientation orientation) {
             ///initializing our brain
-            Response()._init(constraints, orientation);
+            ResponseUI()._init(constraints, orientation);
             return child;
           },
         );
@@ -68,7 +58,7 @@ class Responsive extends StatelessWidget {
 }
 
 ///
-///[Response] is the main brain of the package.
+///[ResponseUI] is the main brain of the package.
 ///
 ///We are using it to calculate the geometric value of our widgets
 ///in which we define for example a specific [width] or [height] in pixels
@@ -87,7 +77,7 @@ class Responsive extends StatelessWidget {
 ///
 ///
 
-class Response {
+class ResponseUI {
   static double _screenWidth;
   static double _screenHeight;
   static double _blockWidth = 0;
@@ -186,8 +176,4 @@ class Response {
   ///[setImageSize] uses its argument [imageSize] to calculate the initial image size (width/height)
   ///in pixels and from that the package can deal with all the calculation.
   ///
-
-  double setImageSize(double imageSize) {
-    return ((imageSize / _blockWidth) * _blockWidth);
-  }
 }
