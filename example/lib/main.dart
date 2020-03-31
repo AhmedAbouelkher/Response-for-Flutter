@@ -67,8 +67,9 @@ class HomePage extends StatelessWidget {
                   TextSpan(
                     text: '  Screen Width: ${ResponseUI().screenWidth}',
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: ResponseUI().setFontSize(18)),
+                      color: Colors.black,
+                      fontSize: ResponseUI().setFontSize(18),
+                    ),
                   ),
                 ],
               ),
