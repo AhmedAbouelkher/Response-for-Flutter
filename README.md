@@ -3,9 +3,9 @@
 Flutter package will help you to build  your responsive UI design as you wanted to be on any device as it recreates every widget to fit the device display size on which the app is working.
 
 ### Features
-- Easy to use [with so few methods to use].
+- Easy to use, with so few yet powerful methods.
 - Fast, very reliable and readable.
-- Saves a lot of time trying to fit widget size to different displays.
+- Saves you a lot of time trying to fit widget size to different displays.
 - Works on any Android/ IOS device (including iPad).
 - Works in Portrait mode or Landscape mode on the same device.
 
@@ -30,11 +30,11 @@ And that is all to be able to initialize the package, **Very easy!**
 
 | Name  | Description  |
 | ------------ | ------------ |
-| `ResponseUI().setWidth(double width)`     |  Sets the widget width in pixels value to be relatively constant across all different display sizes. |
-| `ResponseUI().setHeight(double height)`     | Sets the widget height in pixels value to be relatively constant across all different display sizes. |
-| `ResponseUI().setFontSize(double fontSize)`     | Sets the text size in pixels to be relativly constant on all diplays sizes. |
-| `ResponseUI().isDevicePortrait`     | Helpful if you want to know whether the device orientation is in Portrait or in Landscape.  |
-| `ResponseUI().inMobilePortrait`     | Helps you if you want to know whether the device you are working on a Mobile Portrait or a Tablet Portrait mode.  |
+| `ResponseUI().setWidth(double width)` |  Sets the widget width in pixels value to be relatively constant across all different display sizes. |
+| `ResponseUI().setHeight(double height)` | Sets the widget height in pixels value to be relatively constant across all different display sizes. |
+| `ResponseUI().setFontSize(double fontSize)` | Sets the text size in pixels to be relativly constant on all diplays sizes. |
+| `ResponseUI().isDevicePortrait` | Helpful if you want to know whether the device orientation is in Portrait or in Landscape.  |
+| `ResponseUI().inMobilePortrait` | Helps you if you want to know whether the device you are working on a Mobile Portrait or a Tablet Portrait mode.  |
 
 > ***Note:*** `isDevicePortrait` and `inMobilePortrait` returns a `bool` (true or false).
 
@@ -67,12 +67,12 @@ to set the text size.
 ## Contributions
 
 If you feel like you can contribute to make the package much better and more useful for other
-developers, don't hesitate to fork the repo and make your changes.
+developers, don't hesitate to `fork` the repo and `push` your changes.
 
 Source code on Github: [here](https://github.com/AhmedAbouelkher/Responsive-for-Flutter "here")
 
 
-## Important Note
+### Fast Tricks
 
 If you feel confused or can't understand any part of the code, then the Package
 Documentation will be very useful.

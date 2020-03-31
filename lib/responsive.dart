@@ -172,8 +172,4 @@ class ResponseUI {
     ///[fontSize] is the text size which you want it initially and finally be the same.
     return ((fontSize / _blockHeight) * _blockHeight);
   }
-
-  ///[setImageSize] uses its argument [imageSize] to calculate the initial image size (width/height)
-  ///in pixels and from that the package can deal with all the calculation.
-  ///
 }
