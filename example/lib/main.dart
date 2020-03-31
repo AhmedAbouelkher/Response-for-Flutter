@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
               //across all the available displays on which the app will work on.
               //Note: the scaling process will work also in the same device in both
               //in Portrait mode or in Landscape mode.
-              width: ResponseUI().setWidth(300),
+              width: ResponseUI().setWidth(200),
               height: ResponseUI().setHeight(200),
               color: Colors.teal,
             ),
@@ -53,7 +53,21 @@ class HomePage extends StatelessWidget {
                 fontSize: ResponseUI().setFontSize(24),
                 fontWeight: FontWeight.bold,
               ),
-            )
+            ),
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                      text:
+                          'Screen Height: ${ResponseUI().currentPositionHeight}  ',
+                      style: TextStyle(color: Colors.black)),
+                  TextSpan(
+                      text:
+                          '  Screen Width: ${ResponseUI().currentPositionWidth}',
+                      style: TextStyle(color: Colors.black)),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -110,6 +110,14 @@ class ResponseUI {
   ///[inMobilePortrait] is helpful if you want to know whether the device you are
   ///working on a Mobile Portrait or a Tablet Portrait mode
 
+  ///[currentPositionWidth] returns the current device position screen width.
+  ///Note: You can use it insted of `MediaQuery.of(context).size.width`
+  int get currentPositionWidth => _screenWidth.round();
+
+  ///[currentPositionHeight] returns the current device position screen width.
+  ///Note: You can use it insted of `MediaQuery.of(context).size.height`
+  int get currentPositionHeight => _screenHeight.round();
+
   bool get inMobilePortrait => _isMobilePortrait;
 
   ///[setWidth] uses its argument [width] to calculate the initial widget width
