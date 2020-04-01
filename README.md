@@ -35,6 +35,8 @@ And that is all to be able to initialize the package, **Very easy!**
 | `ResponseUI().setFontSize(double fontSize)` | Sets the text size in pixels to be relativly constant on all diplays sizes. |
 | `ResponseUI().isDevicePortrait` | Helpful if you want to know whether the device orientation is in Portrait or in Landscape.  |
 | `ResponseUI().inMobilePortrait` | Helps you if you want to know whether the device you are working on a Mobile Portrait or a Tablet Portrait mode.  |
+| `ResponseUI().screenWidth` | give you the current device screen width |
+| `ResponseUI().screenHeight` | give you the current device screen height |
 
 > ***Note:*** `isDevicePortrait` and `inMobilePortrait` returns a `bool` (true or false).
 
@@ -72,7 +74,7 @@ developers, don't hesitate to `fork` the repo and `push` your changes.
 Source code on Github: [here](https://github.com/AhmedAbouelkher/Responsive-for-Flutter "here")
 
 
-### Fast Tricks
+### Some Tricks
 
 If you feel confused or can't understand any part of the code, then the Package
 Documentation will be very useful.
@@ -86,3 +88,6 @@ You can access any Method/Class Quick Documentation:
 You can access any Method/Class Full Detailed Documentation:
   in `VS Code` and `Android Studio/IntelliJ IDEA`:  hovering with your cursor over the method/class in your code while
   pressing (`ctrl` on Windows/ `command` on MacOS) button then click.
+
+### Inspired
+This package was inspired by [Prateek Sharma](https://github.com/PrateekSharma1712 "Prateek Sharma") great custom responsive UI [project](https://medium.com/flutter-community/flutter-responsive-ui-for-learning-platform-app-2df185f86e8e "project") 
