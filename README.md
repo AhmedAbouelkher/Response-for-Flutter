@@ -111,9 +111,6 @@ You can access any Method/Class Quick Documentation:
 You can access any Method/Class Full Detailed Documentation:
   in `VS Code` and `Android Studio/IntelliJ IDEA`:  hovering with your cursor over the method/class in your code while
   pressing (`ctrl` on Windows/ `command` on MacOS) button then click.
-<<<<<<< HEAD
-=======
 
 ## Inspired
 This package was inspired by [Prateek Sharma](https://github.com/PrateekSharma1712 "Prateek Sharma") great custom responsive UI [project](https://medium.com/flutter-community/flutter-responsive-ui-for-learning-platform-app-2df185f86e8e "project").
->>>>>>> bug_fixes
