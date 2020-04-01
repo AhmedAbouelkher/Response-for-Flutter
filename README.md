@@ -1,6 +1,6 @@
-# Responsive - Flutter UI Package
+# Responsive
 
-Flutter package will help you to build  your responsive UI design as you wanted to be on any device as it recreates every widget to fit the device display size on which the app is working.
+Flutter UI package which will help you to build your responsive UI design as you wanted to be on any device as it recreates every widget to fit the device display size on which the app is working.
 
 ### Features
 - Easy to use, with so few, yet powerful methods.
