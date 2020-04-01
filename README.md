@@ -3,7 +3,7 @@
 Flutter package will help you to build  your responsive UI design as you wanted to be on any device as it recreates every widget to fit the device display size on which the app is working.
 
 ### Features
-- Easy to use, with so few yet powerful methods.
+- Easy to use, with so few, yet powerful methods.
 - Fast, very reliable and readable.
 - Saves you a lot of time trying to fit widget size to different displays.
 - Works on any Android/ IOS device (including iPad).
@@ -113,4 +113,4 @@ You can access any Method/Class Full Detailed Documentation:
   pressing (`ctrl` on Windows/ `command` on MacOS) button then click.
 
 ## Inspired
-This package was inspired by [Prateek Sharma](https://github.com/PrateekSharma1712 "Prateek Sharma") great custom responsive UI [project](https://medium.com/flutter-community/flutter-responsive-ui-for-learning-platform-app-2df185f86e8e "project").
+This package was inspired by [Prateek Sharma](https://github.com/PrateekSharma1712 "Prateek Sharma")'s great custom responsive UI [project](https://medium.com/flutter-community/flutter-responsive-ui-for-learning-platform-app-2df185f86e8e "project").
