@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               RaisedButton.icon(
                   color: Colors.teal,
                   onPressed: () {
