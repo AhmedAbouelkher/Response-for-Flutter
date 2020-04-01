@@ -39,8 +39,8 @@ And that is all to be able to initialize the package, **Very easy!**
 | `ResponseUI().setFontSize(double fontSize)` | Sets the text size in pixels to be relativly constant on all diplays sizes. |
 | `ResponseUI().isDevicePortrait` | Helpful if you want to know whether the device orientation is in Portrait or in Landscape.  |
 | `ResponseUI().inMobilePortrait` | Helps you if you want to know whether the device you are working on a Mobile Portrait (returns `true`) or a Tablet Portrait mode (returns `false`).  |
-| `ResponseUI().screenWidth` | give you the current device screen width |
-| `ResponseUI().screenHeight` | give you the current device screen height |
+| `ResponseUI().screenWidth` | returens the current device screen width as of type `int`. |
+| `ResponseUI().screenHeight` | returens the current device screen height as of type `int`. |
 
 > ***Note:*** `isDevicePortrait` and `inMobilePortrait` returns a `bool` (true or false) with which you can know the current orientation state of
 your device.
