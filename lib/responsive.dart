@@ -104,11 +104,13 @@ class ResponseUI {
   }
 
   ///[isDevicePortrait] is helpful if you want to know whether the device orientation is
-  ///in Portrait or in Landscape.
+  ///in Portrait or in Landscape, it can ably to any device (Tablet or Mobil Phone).
   bool get isDevicePortrait => _isPortrait;
 
   ///[inMobilePortrait] is helpful if you want to know whether the device you are
-  ///working on a Mobile Portrait or a Tablet Portrait mode
+  ///working on a Mobile Portrait or a Tablet Portrait mode and you can take action
+  ///according to these information ot layout your UI.
+  bool get inMobilePortrait => _isMobilePortrait;
 
   ///[screenWidth] returns the current device screen width.
   ///Note: You can use it insted of `MediaQuery.of(context).size.width`
@@ -117,8 +119,6 @@ class ResponseUI {
   ///[screenHeight] returns the current device screen height.
   ///Note: You can use it insted of `MediaQuery.of(context).size.height`
   int get screenHeight => _screenHeight.round();
-
-  bool get inMobilePortrait => _isMobilePortrait;
 
   ///[setWidth] uses its argument [width] to calculate the initial widget width
   ///in pixels and from that the package can deal with all the calculation.
