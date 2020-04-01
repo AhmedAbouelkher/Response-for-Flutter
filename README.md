@@ -4,18 +4,7 @@ Flutter UI package which will help you to build your responsive UI design as you
 
 ## Demo
 
-<table style={border:"none"}>
-
-<td>
-<img src="https://github.com/AhmedAbouelkher/Responsive-for-Flutter/blob/master/screenshots/1.png" alt="Portrait" width="300"/>
-</td>
-
-
-<td>
-<img src="https://github.com/AhmedAbouelkher/Responsive-for-Flutter/blob/master/screenshots/2.png" alt="LandScape" width="300"/>
-</td>
-
-</table>
+❮ img src="screenshots/1.png" width="300"❯
 
 ### Features
 - Easy to use, with so few, yet powerful methods.
