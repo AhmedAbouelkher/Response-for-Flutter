@@ -4,7 +4,7 @@ Flutter UI package which will help you to build your responsive UI design as you
 
 ## Demo
 
-< img src="screenshots/1.png" width="300" >
+<img src="screenshots/1.png" width="300" >
 
 ### Features
 - Easy to use, with so few, yet powerful methods.
