@@ -39,8 +39,8 @@ And that is all to be able to initialize the package, **Very easy!**
 | `ResponseUI().setFontSize(double fontSize)` | Sets the text size in pixels to be relativly constant on all diplays sizes. |
 | `ResponseUI().isDevicePortrait` | Helpful if you want to know whether the device orientation is in Portrait or in Landscape.  |
 | `ResponseUI().inMobilePortrait` | Helps you if you want to know whether the device you are working on a Mobile Portrait (returns `true`) or a Tablet Portrait mode (returns `false`).  |
-| `ResponseUI().screenWidth` | returens the current device screen width as of type `int`. |
-| `ResponseUI().screenHeight` | returens the current device screen height as of type `int`. |
+| `ResponseUI().screenWidth` | returns the current device screen width as of type `int`. |
+| `ResponseUI().screenHeight` | returns the current device screen height as of type `int`. |
 
 > ***Note:*** `isDevicePortrait` and `inMobilePortrait` returns a `bool` (true or false) with which you can know the current orientation state of
 your device.
@@ -76,14 +76,16 @@ to set the text size.
 
 ```dart
     TextSpan(
-      text: '\nScreen Height: ${ResponseUI().screenHeight}px\n', //we are getting back our current device screen height in pixels.
+      text: '\nScreen Height: ${ResponseUI().screenHeight}px\n', //we are getting back our current device screen 
+      //height in pixels.
       style: TextStyle(
         color: Colors.black,
         fontSize: ResponseUI().setFontSize(18),
       ),
     ),
     TextSpan(
-      text: 'Screen Width: ${ResponseUI().screenWidth}px', //we are getting back our current device screen width in pixels.
+      text: 'Screen Width: ${ResponseUI().screenWidth}px', //we are getting back our current device screen 
+      //width in pixels.
       style: TextStyle(
         color: Colors.black,
         fontSize: ResponseUI().setFontSize(18),
