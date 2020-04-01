@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:response/Response.dart';
+import 'package:response/response.dart';
 
 void main() => runApp(MyApp());
 
