@@ -1,7 +1,6 @@
-name: responsive
+name: response
 description: Flutter plugin helps to maintain a clean looking widgets size in all available displays in which the app will be.
 version: 0.0.1
-author: Ahmed M. Abouelkher<am303737@gmail.com>
 homepage: https://github.com/AhmedAbouelkher/Responsive-for-Flutter/
 
 environment:

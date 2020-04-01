@@ -1,15 +1,15 @@
-library responsive;
+library response;
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-class Responsive extends StatelessWidget {
-  ///[Responsive] is an initialization Class for the whole package.
+class Response extends StatelessWidget {
+  ///[Response] is an initialization Class for the whole package.
   ///
   ///We are using it to get [constraints] and [orientation] information
   ///about the currently running app.
 
-  Responsive({@required this.child});
+  Response({@required this.child});
 
   ///`child` is the child widget in which we want to use our package
   ///

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive/responsive.dart';
+import 'package:response/Response.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     //initializing Our Package to get data and process them from
     //the general context of the app
     //Both Child and Context is required to initialize the config process
-    return Responsive(
+    return Response(
       child: MaterialApp(
         home: HomePage(),
       ),
