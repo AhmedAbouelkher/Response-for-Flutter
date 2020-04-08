@@ -3,7 +3,7 @@
 Flutter UI package which will help you to build your responsive UI design as you wanted to be on any device as it recreates every widget to fit the device display size on which the app is working.
 
 
-<img src="screenshots/1.png" width="320" alt="Mobile">  <img src="screenshots/2.png" height="900" alt="Tablet">
+<img src="screenshots/1.png" width="320" alt="Mobile">  <img src="screenshots/2.png" height="800" alt="Tablet" align="middle">
 
 
 ### Features
