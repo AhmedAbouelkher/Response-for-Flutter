@@ -3,7 +3,8 @@
 Flutter UI package which will help you to build your responsive UI design as you wanted to be on any device as it recreates every widget to fit the device display size on which the app is working.
 
 
-<img src="screenshots/1.png" width="320" alt="Portrait Mode">  <img src="screenshots/2.png" height="280" align="top" alt="Landscape Mode">
+<img src="screenshots/1.png" width="320" alt="Mobile">  
+<img src="screenshots/2.png" height="280"  alt="Tablet">
 
 
 ### Features
@@ -18,29 +19,37 @@ Flutter UI package which will help you to build your responsive UI design as you
 **First** wrap your `MaterialApp` widget with `Response`.
 
 ```dart
-    Response(
+     Response(
+      originalScreenHeight: 759,
+      originalScreenWidth: 392,
       child: MaterialApp(
         home: HomePage(),
       ),
     )
 ```
-
 > **Note:** Responsive needs to be at the top of your **Widget Tree** to be able to work and rebulid the widgets to a new size as the device display changes.
+
+**Second**
+declare an instance `response` of `ResponseUI()` class.
+
+```dart
+ResponseUI response = ResponseUI();
+``` 
 
 And that is all to be able to initialize the package, **Very easy!**
 
 
-**Second** to use the package on your widget you have 4 easy to use methods:
+to use the package on your widget you have 4 easy to use methods:
 
 | Name  | Description  |
 | ------------ | ------------ |
-| `ResponseUI().setWidth(double width)` |  Sets the widget width in pixels value to be relatively constant across all different display sizes. |
-| `ResponseUI().setHeight(double height)` | Sets the widget height in pixels value to be relatively constant across all different display sizes. |
-| `ResponseUI().setFontSize(double fontSize)` | Sets the text size in pixels to be relativly constant on all diplays sizes. |
-| `ResponseUI().isDevicePortrait` | Helpful if you want to know whether the device orientation is in Portrait or in Landscape.  |
-| `ResponseUI().inMobilePortrait` | Helps you if you want to know whether the device you are working on a Mobile Portrait (returns `true`) or a Tablet Portrait mode (returns `false`).  |
-| `ResponseUI().screenWidth` | returns the current device screen width as of type `int`. |
-| `ResponseUI().screenHeight` | returns the current device screen height as of type `int`. |
+| `response.setWidth(width)` |  Sets the widget width in pixels value to be relatively constant across all different display sizes. |
+| `response.setHeight(height)` | Sets the widget height in pixels value to be relatively constant across all different display sizes. |
+| `response.setFontSize(fontSize)` | Sets the text size in pixels to be relativly constant on all diplays sizes. |
+| `response.isDevicePortrait` | Helpful if you want to know whether the device orientation is in Portrait or in Landscape.  |
+| `response.inMobilePortrait` | Helps you if you want to know whether the device you are working on a Mobile Portrait (returns `true`) or a Tablet Portrait mode (returns `false`).  |
+| `response.screenWidth` | returns the current device screen width as of type `double`. |
+| `response.screenHeight` | returns the current device screen height as of type `double`. |
 
 > ***Note:*** `isDevicePortrait` and `inMobilePortrait` returns a `bool` (true or false) with which you can know the current orientation state of
 your device.
@@ -51,9 +60,9 @@ to set a width and height to for example a Container.
 ```dart
 //We want the Container Widget to be 200px in width and 200px in height
     Container(
-        width: ResponseUI().setWidth(300), //setting the Container width to be 300px
-        height: ResponseUI().setHeight(200), //setting the Container height to be 300px
-        color: Colors.red,
+        width: response.setWidth(300), //setting the Container width to be 300px
+        height: response.setHeight(200), //setting the Container height to be 300px
+        color: Colors.teal,
        )
 ```
 > ***Note:*** the scaling process will work also in the same device in both
@@ -66,7 +75,7 @@ to set the text size.
     Text(
         'This is a Test Text',
         style: TextStyle(
-           fontSize: ResponseUI().setFontSize(24), //defined a fixed font size in pixels
+           fontSize: response.setFontSize(24), //defined a fixed font size in pixels
            fontWeight: FontWeight.bold,
     ),
 )
@@ -76,19 +85,19 @@ to set the text size.
 
 ```dart
     TextSpan(
-      text: '\nScreen Height: ${ResponseUI().screenHeight}px\n', //we are getting back our current device screen 
+      text: '\nScreen Height: ${response.screenHeight}px\n', //we are getting back our current device screen 
       //height in pixels.
       style: TextStyle(
         color: Colors.black,
-        fontSize: ResponseUI().setFontSize(18),
+        fontSize: response.setFontSize(18),
       ),
     ),
     TextSpan(
-      text: 'Screen Width: ${ResponseUI().screenWidth}px', //we are getting back our current device screen 
+      text: 'Screen Width: ${response.screenWidth}px', //we are getting back our current device screen 
       //width in pixels.
       style: TextStyle(
         color: Colors.black,
-        fontSize: ResponseUI().setFontSize(18),
+        fontSize: response.setFontSize(18),
       ),
     ),
   ],

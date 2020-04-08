@@ -9,7 +9,44 @@ class Response extends StatelessWidget {
   ///We are using it to get [constraints] and [orientation] information
   ///about the currently running app.
 
-  Response({@required this.child});
+  Response(
+      {@required this.child,
+      this.originalScreenHeight = 759,
+      this.originalScreenWidth = 392});
+
+  ///`originalScreenHeight` is the original device screen height in pixels
+  ///on which you designed your origial app layout.
+  /// {@tool sample}
+  ///
+  /// ```dart
+  /// Response(
+  ///  originalScreenHeight: 759,
+  ///  originalScreenWidth: 392,
+  ///  child: MaterialApp(
+  ///     home: HomePage(),
+  ///  ),
+  ///)
+  /// ```
+  /// {@end-tool}
+  ///
+  final double originalScreenHeight;
+
+  ///`originalScreenWidth` is the original device screen width in pixels
+  ///on which you designed your origial app layout.
+  ///  /// {@tool sample}
+  ///
+  /// ```dart
+  /// Response(
+  ///  originalScreenHeight: 759,
+  ///  originalScreenWidth: 392,
+  ///  child: MaterialApp(
+  ///     home: HomePage(),
+  ///  ),
+  ///)
+  /// ```
+  /// {@end-tool}
+  ///
+  final double originalScreenWidth;
 
   ///`child` is the child widget in which we want to use our package
   ///
@@ -18,23 +55,10 @@ class Response extends StatelessWidget {
   ///
   ///`child` is a requirment to enable the package to work.
   ///
-  /// {@tool sample}
-  ///
-  /// ```dart
-  ///     UISizeConfig(
-  ///       context: context,
-  ///       child: MaterialApp(
-  ///         home: HomePage(),
-  ///       ),
-  ///     )
-  /// ```
-  /// {@end-tool}
-  ///
   /// Still confused? Run the example app in which you can fine
   /// a working example with full comments to teach you every step
   /// the example: https://github.com/AhmedAbouelkher/UI_SizeConfig-for-Flutter/tree/master/example
   ///
-
   final Widget child;
 
   @override
@@ -48,7 +72,8 @@ class Response extends StatelessWidget {
         return OrientationBuilder(
           builder: (BuildContext context, Orientation orientation) {
             ///initializing our brain
-            ResponseUI()._init(constraints, orientation);
+            ResponseUI()._init(constraints, orientation, originalScreenHeight,
+                originalScreenWidth);
             return child;
           },
         );
@@ -84,8 +109,11 @@ class ResponseUI {
   static double _blockHeight = 0;
   static bool _isPortrait = true;
   static bool _isMobilePortrait = false;
+  static double _fixedHeightFactor = 0;
+  static double _fixedWidthFactor = 0;
 
-  void _init(BoxConstraints constraints, Orientation orientation) {
+  void _init(BoxConstraints constraints, Orientation orientation,
+      double originalHeight, double originalWidth) {
     if (orientation == Orientation.portrait) {
       _screenWidth = constraints.maxWidth;
       _screenHeight = constraints.maxHeight;
@@ -99,8 +127,10 @@ class ResponseUI {
       _isPortrait = false;
       _isMobilePortrait = false;
     }
-    _blockWidth = _screenWidth / 200;
-    _blockHeight = _screenHeight / 200;
+    _blockHeight = _screenHeight / 100;
+    _blockWidth = _screenWidth / 100;
+    _fixedHeightFactor = originalHeight / 100;
+    _fixedWidthFactor = originalWidth / 100;
   }
 
   ///[isDevicePortrait] is helpful if you want to know whether the device orientation is
@@ -114,11 +144,11 @@ class ResponseUI {
 
   ///[screenWidth] returns the current device screen width.
   ///Note: You can use it insted of `MediaQuery.of(context).size.width`
-  int get screenWidth => _screenWidth.round();
+  double get screenWidth => _screenWidth;
 
   ///[screenHeight] returns the current device screen height.
   ///Note: You can use it insted of `MediaQuery.of(context).size.height`
-  int get screenHeight => _screenHeight.round();
+  double get screenHeight => _screenHeight;
 
   ///[setWidth] uses its argument [width] to calculate the initial widget width
   ///in pixels and from that the package can deal with all the calculation.
@@ -127,8 +157,8 @@ class ResponseUI {
   ///
   /// ```dart
   /// Container(
-  ///   width: SizeConfig().setWidth(300),
-  ///   height: SizeConfig().setHeight(200),
+  ///   width: response.setWidth(300),
+  ///   height: response.setHeight(200),
   ///   color: Colors.teal,
   ///  ), //Container
   /// ```
@@ -136,7 +166,10 @@ class ResponseUI {
 
   double setWidth(double width) {
     ///[width] is the widget width which you want it initially and finally be the same.
-    return ((width / _blockWidth) * _blockWidth);
+    if (_fixedWidthFactor < _blockWidth * 0.6) {
+      _fixedWidthFactor *= 1.13;
+    }
+    return ((width / _fixedWidthFactor) * _blockWidth);
   }
 
   ///[setHeight] uses its argument [height] to calculate the initial widget height
@@ -146,8 +179,8 @@ class ResponseUI {
   ///
   /// ```dart
   /// Container(
-  ///   width: SizeConfig().setWidth(300),
-  ///   height: SizeConfig().setHeight(200),
+  ///   width: response.setWidth(300),
+  ///   height: response.setHeight(200),
   ///   color: Colors.teal,
   ///  ), //Container
   /// ```
@@ -156,7 +189,7 @@ class ResponseUI {
 
   double setHeight(double height) {
     ///[height] is the widget height which you want it initially and finally be the same.
-    return ((height / _blockHeight) * _blockHeight);
+    return ((height / _fixedHeightFactor) * _blockHeight);
   }
 
   ///[setFontSize] uses its argument [fontSize] to calculate the initial text size
@@ -168,7 +201,7 @@ class ResponseUI {
   /// Text(
   ///    'This is a Test Text',
   ///     style: TextStyle(
-  ///             fontSize: SizeConfig().setFontSize(24),
+  ///             fontSize: response.setFontSize(24),
   ///             fontWeight: FontWeight.bold,
   ///          ), //TextStyle
   ///       ) //Text
@@ -178,6 +211,6 @@ class ResponseUI {
 
   double setFontSize(double fontSize) {
     ///[fontSize] is the text size which you want it initially and finally be the same.
-    return ((fontSize / _blockHeight) * _blockHeight);
+    return ((fontSize / _fixedHeightFactor) * _blockHeight);
   }
 }
