@@ -164,12 +164,13 @@ class ResponseUI {
   /// ```
   /// {@end-tool}
 
+  ///[width] is the widget width which you want it initially and finally be the same.
   double setWidth(double width) {
-    ///[width] is the widget width which you want it initially and finally be the same.
+    double _tempFixedWidthFactor = 0;
     if (_fixedWidthFactor < _blockWidth * 0.6) {
-      _fixedWidthFactor *= 1.13;
+      _tempFixedWidthFactor = _fixedWidthFactor * 1.13;
     }
-    return ((width / _fixedWidthFactor) * _blockWidth);
+    return ((width / _tempFixedWidthFactor) * _blockWidth);
   }
 
   ///[setHeight] uses its argument [height] to calculate the initial widget height
