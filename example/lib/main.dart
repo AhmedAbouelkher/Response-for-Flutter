@@ -3,7 +3,7 @@ import 'package:response/response.dart';
 
 void main() => runApp(MyApp());
 
-ResponseUI response = ResponseUI();
+var response = ResponseUI();
 
 class MyApp extends StatelessWidget {
   @override
@@ -44,14 +44,14 @@ class HomePage extends StatelessWidget {
                 //across all the available displays on which the app will work on.
                 //Note: the scaling process will work also in the same device in both
                 //in Portrait mode or in Landscape mode.
-                width: response.setHeight(300),
+                width: response.setWidth(300),
                 height: response.setHeight(200),
                 color: Colors.teal,
                 child: Center(
                   child: Text(
-                    "Hello World",
+                    "Hello, World!",
                     style: TextStyle(
-                      fontSize: response.setFontSize(50),
+                      fontSize: response.setFontSize(45),
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -109,7 +109,7 @@ class HomePage extends StatelessWidget {
                   icon: Icon(
                     Icons.info,
                     color: Colors.white,
-                    size: response.setHeight(18),
+                    size: response.setHeight(20),
                   ),
                   label: Text(
                     'Orientation State',

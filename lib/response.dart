@@ -15,7 +15,7 @@ class Response extends StatelessWidget {
       this.originalScreenWidth = 392});
 
   ///`originalScreenHeight` is the original device screen height in pixels
-  ///on which you designed your origial app layout.
+  ///on which you designed your original app layout.
   /// {@tool sample}
   ///
   /// ```dart
@@ -32,7 +32,7 @@ class Response extends StatelessWidget {
   final double originalScreenHeight;
 
   ///`originalScreenWidth` is the original device screen width in pixels
-  ///on which you designed your origial app layout.
+  ///on which you designed your original app layout.
   ///  /// {@tool sample}
   ///
   /// ```dart
@@ -53,7 +53,7 @@ class Response extends StatelessWidget {
   ///`child` must be in the top of our (Widget Tree) to work properly.
   ///You can say that your [child] widget is always will be our [MaterialApp]
   ///
-  ///`child` is a requirment to enable the package to work.
+  ///`child` is a requirement to enable the package to work.
   ///
   /// Still confused? Run the example app in which you can fine
   /// a working example with full comments to teach you every step
@@ -133,24 +133,24 @@ class ResponseUI {
     _fixedWidthFactor = originalWidth / 100;
   }
 
-  ///[isDevicePortrait] is helpful if you want to know whether the device orientation is
+  ///`isDevicePortrait` is helpful if you want to know whether the device orientation is
   ///in Portrait or in Landscape, it can ably to any device (Tablet or Mobil Phone).
   bool get isDevicePortrait => _isPortrait;
 
-  ///[inMobilePortrait] is helpful if you want to know whether the device you are
+  ///`inMobilePortrait` is helpful if you want to know whether the device you are
   ///working on a Mobile Portrait or a Tablet Portrait mode and you can take action
   ///according to these information ot layout your UI.
   bool get inMobilePortrait => _isMobilePortrait;
 
-  ///[screenWidth] returns the current device screen width.
-  ///Note: You can use it insted of `MediaQuery.of(context).size.width`
+  ///`screenWidth` returns the current device screen width.
+  ///Note: You can use it instead of `MediaQuery.of(context).size.width`
   double get screenWidth => _screenWidth;
 
   ///[screenHeight] returns the current device screen height.
-  ///Note: You can use it insted of `MediaQuery.of(context).size.height`
+  ///Note: You can use it instead of `MediaQuery.of(context).size.height`
   double get screenHeight => _screenHeight;
 
-  ///[setWidth] uses its argument [width] to calculate the initial widget width
+  ///`setWidth` uses its argument `width` to calculate the initial widget width
   ///in pixels and from that the package can deal with all the calculation.
   ///`setWidth`
   /// {@tool sample}
@@ -164,16 +164,16 @@ class ResponseUI {
   /// ```
   /// {@end-tool}
 
-  ///[width] is the widget width which you want it initially and finally be the same.
+  ///`width` is the widget width which you want it to be the same across any screen size.
   double setWidth(double width) {
-    double _tempFixedWidthFactor = 0;
+    double _tempFixedWidthFactor = _fixedWidthFactor;
     if (_fixedWidthFactor < _blockWidth * 0.6) {
-      _tempFixedWidthFactor = _fixedWidthFactor * 1.13;
+      _tempFixedWidthFactor *= 1.48;
     }
     return ((width / _tempFixedWidthFactor) * _blockWidth);
   }
 
-  ///[setHeight] uses its argument [height] to calculate the initial widget height
+  ///`setHeight` uses its argument `height` to calculate the initial widget height
   ///in pixels and from that the package can deal with all the calculation.
   ///`setHeight`
   /// {@tool sample}
@@ -188,12 +188,12 @@ class ResponseUI {
   /// {@end-tool}
   ///
 
+  ///`height` is the widget height which you want it to be the same across any screen size.
   double setHeight(double height) {
-    ///[height] is the widget height which you want it initially and finally be the same.
     return ((height / _fixedHeightFactor) * _blockHeight);
   }
 
-  ///[setFontSize] uses its argument [fontSize] to calculate the initial text size
+  ///`setFontSize` uses its argument `fontSize` to calculate the initial text size
   ///in pixels and from that the package can deal with all the calculation.
   ///`setFontSize`
   /// {@tool sample}
@@ -209,9 +209,8 @@ class ResponseUI {
   /// ```
   /// {@end-tool}
   ///
-
+  ///`fontSize` is the text size which you want it to be the same across any screen size.
   double setFontSize(double fontSize) {
-    ///[fontSize] is the text size which you want it initially and finally be the same.
     return ((fontSize / _fixedHeightFactor) * _blockHeight);
   }
 }
