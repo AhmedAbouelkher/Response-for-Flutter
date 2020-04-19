@@ -1,4 +1,7 @@
-## [0.0.1+2] - 2020-4-14
+## [0.0.1+3] - 2020-4-19
+* Bug Fixes
+
+## [0.0.1+3] - 2020-4-14
 * Bug Fixes
 * General Performance Fixes.
 
