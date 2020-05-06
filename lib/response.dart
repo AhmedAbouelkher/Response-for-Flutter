@@ -3,6 +3,12 @@ library response;
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
+extension SizeExtension on num {
+  num get asWidth => ResponseUI().setWidth(this * 1.0);
+  num get asHeight => ResponseUI().setHeight(this * 1.0);
+  double get asFontSize => ResponseUI().setFontSize(this * 1.0);
+}
+
 class Response extends StatelessWidget {
   ///[Response] is an initialization Class for the whole package.
   ///
@@ -33,7 +39,7 @@ class Response extends StatelessWidget {
 
   ///`originalScreenWidth` is the original device screen width in pixels
   ///on which you designed your original app layout.
-  ///  /// {@tool sample}
+  /// {@tool sample}
   ///
   /// ```dart
   /// Response(
@@ -73,13 +79,16 @@ class Response extends StatelessWidget {
           builder: (BuildContext context, Orientation orientation) {
             ///initializing our brain
             ResponseUI()._init(constraints, orientation, originalScreenHeight,
-                originalScreenWidth);
+                originalScreenWidth, context);
             return child;
           },
         );
       },
     );
   }
+
+  static bool _isPortrait = true;
+  static bool get isDevicePortrait => _isPortrait;
 }
 
 ///
@@ -101,19 +110,32 @@ class Response extends StatelessWidget {
 /// [height] and [width] to maintain the same display occupation size.
 ///
 ///
-
 class ResponseUI {
+  static ResponseUI _instance;
   static double _screenWidth;
   static double _screenHeight;
   static double _blockWidth = 0;
   static double _blockHeight = 0;
   static bool _isPortrait = true;
   static bool _isMobilePortrait = false;
-  static double _fixedHeightFactor = 0;
+  static double fixedHeightFactor = 0;
   static double _fixedWidthFactor = 0;
+  static double _originalWidth = 0;
+  static double _originalHeight = 0;
+
+  ResponseUI._();
+  factory ResponseUI() {
+    return _instance;
+  }
 
   void _init(BoxConstraints constraints, Orientation orientation,
-      double originalHeight, double originalWidth) {
+      double originalHeight, double originalWidth, BuildContext context) {
+//    _originalHeight = originalHeight;
+    _originalWidth = originalWidth;
+
+    if (_instance == null) {
+      _instance = ResponseUI._();
+    }
     if (orientation == Orientation.portrait) {
       _screenWidth = constraints.maxWidth;
       _screenHeight = constraints.maxHeight;
@@ -129,7 +151,7 @@ class ResponseUI {
     }
     _blockHeight = _screenHeight / 100;
     _blockWidth = _screenWidth / 100;
-    _fixedHeightFactor = originalHeight / 100;
+    fixedHeightFactor = originalHeight / 100;
     _fixedWidthFactor = originalWidth / 100;
   }
 
@@ -146,7 +168,7 @@ class ResponseUI {
   ///Note: You can use it instead of `MediaQuery.of(context).size.width`
   double get screenWidth => _screenWidth;
 
-  ///[screenHeight] returns the current device screen height.
+  ///`screenHeight` returns the current device screen height.
   ///Note: You can use it instead of `MediaQuery.of(context).size.height`
   double get screenHeight => _screenHeight;
 
@@ -166,11 +188,16 @@ class ResponseUI {
 
   ///`width` is the widget width which you want it to be the same across any screen size.
   double setWidth(double width) {
-    double _tempFixedWidthFactor = _fixedWidthFactor;
+    double _widthCorrectionFactor = _fixedWidthFactor;
+    //if the current device is Mobile
     if (_fixedWidthFactor < _blockWidth * 0.6) {
-      _tempFixedWidthFactor *= 1.48;
+      _widthCorrectionFactor *= 1.48;
     }
-    return ((width / _tempFixedWidthFactor) * _blockWidth);
+    //if the original device is Tablet
+    if (_originalWidth > _screenWidth) {
+      _widthCorrectionFactor /= 1.75;
+    }
+    return ((width / _widthCorrectionFactor) * _blockWidth);
   }
 
   ///`setHeight` uses its argument `height` to calculate the initial widget height
@@ -190,7 +217,12 @@ class ResponseUI {
 
   ///`height` is the widget height which you want it to be the same across any screen size.
   double setHeight(double height) {
-    return ((height / _fixedHeightFactor) * _blockHeight);
+    double _heightCorrectionFactor = fixedHeightFactor;
+    //if the original device is Tablet
+    if (_originalWidth > _screenWidth) {
+      _heightCorrectionFactor /= 1.25;
+    }
+    return ((height / _heightCorrectionFactor) * _blockHeight);
   }
 
   ///`setFontSize` uses its argument `fontSize` to calculate the initial text size
@@ -211,6 +243,11 @@ class ResponseUI {
   ///
   ///`fontSize` is the text size which you want it to be the same across any screen size.
   double setFontSize(double fontSize) {
-    return ((fontSize / _fixedHeightFactor) * _blockHeight);
+    double _heightCorrectionFactor = fixedHeightFactor;
+    //if the original device is Tablet
+    if (_originalWidth > _screenWidth) {
+      _heightCorrectionFactor /= 1.2;
+    }
+    return ((fontSize / _heightCorrectionFactor) * _blockHeight);
   }
 }

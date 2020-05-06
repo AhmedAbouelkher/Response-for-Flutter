@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:response/response.dart';
 
-void main() => runApp(MyApp());
-
 var response = ResponseUI();
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -12,8 +12,6 @@ class MyApp extends StatelessWidget {
     //the general context of the app
     //Both Child and Context is required to initialize the config process
     return Response(
-      originalScreenHeight: 759,
-      originalScreenWidth: 392,
       child: MaterialApp(
         home: HomePage(),
       ),
@@ -59,7 +57,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: response.setHeight(30),
+                height: response.setHeight(20),
               ),
               Text(
                 'This is a Test Text',
@@ -105,11 +103,13 @@ class HomePage extends StatelessWidget {
                     //checking whether our current working device is in Portrait orientation as a Mobile Phone device
                     //(Not a Tablet) or not.
                     print("inMobilePortrait: ${response.inMobilePortrait}");
+//                    print("Top Padding: ${response.bottomPadding}");
+                    print(MediaQuery.of(context).size.height);
                   },
                   icon: Icon(
                     Icons.info,
                     color: Colors.white,
-                    size: response.setHeight(20),
+                    size: (20).asHeight,
                   ),
                   label: Text(
                     'Orientation State',

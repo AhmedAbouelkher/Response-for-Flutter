@@ -6,7 +6,7 @@ Flutter UI package which will help you to build your responsive UI design as you
 ![thumbnail](https://github.com/AhmedAbouelkher/Response-for-Flutter/blob/master/screenshots/Combined.jpg)
 
 ### Features
-- Easy to use, with so few, yet powerful methods.
+- Easy to use, with so few but yet powerful methods.
 - Fast, very reliable and readable.
 - Saves you a lot of time trying to fit widget size to different displays.
 - Works on any Android/ IOS device (including iPad).
@@ -110,7 +110,7 @@ developers, don't hesitate to `fork` the repo and `push` your changes.
 Source code on Github: [here](https://github.com/AhmedAbouelkher/Responsive-for-Flutter "here")
 
 
-## Some Tricks
+<!-- ## Some Tricks
 
 If you feel confused or can't understand any part of the code, then the Package
 Documentation will be very useful.
@@ -123,7 +123,7 @@ You can access any Method/Class Quick Documentation:
 
 You can access any Method/Class Full Detailed Documentation:
   in `VS Code` and `Android Studio/IntelliJ IDEA`:  hovering with your cursor over the method/class in your code while
-  pressing (`ctrl` on Windows/ `command` on MacOS) button then click.
+  pressing (`ctrl` on Windows/ `command` on MacOS) button then click. -->
 
 ## Inspired
 This package was inspired by [Prateek Sharma](https://github.com/PrateekSharma1712 "Prateek Sharma")'s great custom responsive UI [project](https://medium.com/flutter-community/flutter-responsive-ui-for-learning-platform-app-2df185f86e8e "project").
