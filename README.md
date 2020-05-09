@@ -111,6 +111,7 @@ to set the text size.
            fontWeight: FontWeight.bold,
     ),
 )
+```
 
 ### Getting Screen Width & Height
 
