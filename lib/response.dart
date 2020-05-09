@@ -3,6 +3,17 @@ library response;
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
+extension SizeExtension on num {
+  ///`asWidth` is used to set that fixed [width] ratio across all screen sizes
+  num get asWidth => ResponseUI().setWidth(this * 1.0);
+
+  ///`asHeight` is used to set that fixed [height] ratio across all screen sizes
+  num get asHeight => ResponseUI().setHeight(this * 1.0);
+
+  ///`asFontSize` is used to set that fixed [font size] ratio across all screen sizes
+  double get asFontSize => ResponseUI().setFontSize(this * 1.0);
+}
+
 class Response extends StatelessWidget {
   ///[Response] is an initialization Class for the whole package.
   ///
@@ -33,7 +44,7 @@ class Response extends StatelessWidget {
 
   ///`originalScreenWidth` is the original device screen width in pixels
   ///on which you designed your original app layout.
-  ///  /// {@tool sample}
+  /// {@tool sample}
   ///
   /// ```dart
   /// Response(
@@ -51,7 +62,8 @@ class Response extends StatelessWidget {
   ///`child` is the child widget in which we want to use our package
   ///
   ///`child` must be in the top of our (Widget Tree) to work properly.
-  ///You can say that your [child] widget is always will be our [MaterialApp]
+  ///You can say that your `child` widget is always will be our `MaterialApp` or the [home] widget
+  ///if you wanted to use the `MediaQuery` related functions with this package
   ///
   ///`child` is a requirement to enable the package to work.
   ///
@@ -63,17 +75,16 @@ class Response extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ///[LayoutBuilder] is used to get the constraints/borders geometry of
+    ///`LayoutBuilder` is used to get the constraints/borders geometry of
     ///the device screen in which the app is working on.
     return LayoutBuilder(
       builder: (context, constraints) {
-        ///[OrientationBuilder] is used to get the orientation mode of
+        ///`OrientationBuilder` is used to get the orientation mode of
         ///the device in which the app is working on.
         return OrientationBuilder(
-          builder: (BuildContext context, Orientation orientation) {
-            ///initializing our brain
-            ResponseUI()._init(constraints, orientation, originalScreenHeight,
-                originalScreenWidth);
+          builder: (context, orientaton) {
+            ResponseUI._()._init(constraints, orientaton, originalScreenHeight,
+                originalScreenWidth, context);
             return child;
           },
         );
@@ -101,19 +112,34 @@ class Response extends StatelessWidget {
 /// [height] and [width] to maintain the same display occupation size.
 ///
 ///
-
 class ResponseUI {
+  static ResponseUI _instance;
   static double _screenWidth;
   static double _screenHeight;
   static double _blockWidth = 0;
   static double _blockHeight = 0;
   static bool _isPortrait = true;
   static bool _isMobilePortrait = false;
-  static double _fixedHeightFactor = 0;
+  static double fixedHeightFactor = 0;
   static double _fixedWidthFactor = 0;
+  static double _originalWidth = 0;
+  static double _originalHeight = 0;
+  static BuildContext _context;
+  MediaQueryData _mediaQuery;
+
+  ResponseUI._();
+  factory ResponseUI() {
+    return _instance;
+  }
 
   void _init(BoxConstraints constraints, Orientation orientation,
-      double originalHeight, double originalWidth) {
+      double originalHeight, double originalWidth, BuildContext context) {
+    _originalHeight = originalHeight;
+    _originalWidth = originalWidth;
+
+    if (_instance == null) {
+      _instance = ResponseUI._();
+    }
     if (orientation == Orientation.portrait) {
       _screenWidth = constraints.maxWidth;
       _screenHeight = constraints.maxHeight;
@@ -129,8 +155,11 @@ class ResponseUI {
     }
     _blockHeight = _screenHeight / 100;
     _blockWidth = _screenWidth / 100;
-    _fixedHeightFactor = originalHeight / 100;
+    fixedHeightFactor = originalHeight / 100;
     _fixedWidthFactor = originalWidth / 100;
+
+    //! Testing/Beta version
+    _context = context;
   }
 
   ///`isDevicePortrait` is helpful if you want to know whether the device orientation is
@@ -146,7 +175,7 @@ class ResponseUI {
   ///Note: You can use it instead of `MediaQuery.of(context).size.width`
   double get screenWidth => _screenWidth;
 
-  ///[screenHeight] returns the current device screen height.
+  ///`screenHeight` returns the current device screen height.
   ///Note: You can use it instead of `MediaQuery.of(context).size.height`
   double get screenHeight => _screenHeight;
 
@@ -166,11 +195,16 @@ class ResponseUI {
 
   ///`width` is the widget width which you want it to be the same across any screen size.
   double setWidth(double width) {
-    double _tempFixedWidthFactor = _fixedWidthFactor;
+    double _widthCorrectionFactor = _fixedWidthFactor;
+    //if the current device is Mobile
     if (_fixedWidthFactor < _blockWidth * 0.6) {
-      _tempFixedWidthFactor *= 1.48;
+      _widthCorrectionFactor *= 1.48;
     }
-    return ((width / _tempFixedWidthFactor) * _blockWidth);
+    //if the original device is Tablet
+    if (_originalWidth > _screenWidth) {
+      _widthCorrectionFactor /= 1.75;
+    }
+    return ((width / _widthCorrectionFactor) * _blockWidth);
   }
 
   ///`setHeight` uses its argument `height` to calculate the initial widget height
@@ -190,7 +224,12 @@ class ResponseUI {
 
   ///`height` is the widget height which you want it to be the same across any screen size.
   double setHeight(double height) {
-    return ((height / _fixedHeightFactor) * _blockHeight);
+    double _heightCorrectionFactor = fixedHeightFactor;
+    //if the original device is Tablet
+    if (_originalWidth > _screenWidth) {
+      _heightCorrectionFactor /= 1.25;
+    }
+    return ((height / _heightCorrectionFactor) * _blockHeight);
   }
 
   ///`setFontSize` uses its argument `fontSize` to calculate the initial text size
@@ -211,6 +250,67 @@ class ResponseUI {
   ///
   ///`fontSize` is the text size which you want it to be the same across any screen size.
   double setFontSize(double fontSize) {
-    return ((fontSize / _fixedHeightFactor) * _blockHeight);
+    double _heightCorrectionFactor = fixedHeightFactor;
+    //if the original device is Tablet
+    if (_originalWidth > _screenWidth) {
+      _heightCorrectionFactor /= 1.2;
+    }
+    return ((fontSize / _heightCorrectionFactor) * _blockHeight);
+  }
+
+  final String errorMessage = '''couldn't find context
+Context can't equal 'null'
+if you want to use any `MediaQuery` related functions, you should set the `Response` widget as a child (home) to the `MaterialApp` widget''';
+
+  ///`screenPixelRatio` is a `MediaQuery` function.
+  /// The number of device pixels for each logical pixel. This number might not
+  /// be a power of two. Indeed, it might not even be an integer. For example,
+  /// the Nexus 6 has a device pixel ratio of 3.5.
+  double get screenPixelRatio {
+    try {
+      _mediaQuery = MediaQuery.of(_context);
+      return _mediaQuery.devicePixelRatio;
+    } catch (e) {
+      throw errorMessage;
+    }
+  }
+
+  /// The number of font pixels for each logical pixel.
+  ///
+  /// For example, if the text scale factor is 1.5, text will be 50% larger than
+  /// the specified font size.
+  ///
+  /// See also:
+  ///
+  ///  * [MediaQuery.textScaleFactorOf], a convenience method which returns the
+  ///    textScaleFactor defined for a [BuildContext].
+
+  double get textScaleFactor {
+    try {
+      _mediaQuery = MediaQuery.of(_context);
+      return _mediaQuery.textScaleFactor;
+    } catch (e) {
+      throw errorMessage;
+    }
+  }
+
+  /// The padding offset from the bottom.
+  double get bottomPadding {
+    try {
+      _mediaQuery = MediaQuery.of(_context);
+      return _mediaQuery.padding.bottom;
+    } catch (e) {
+      throw errorMessage;
+    }
+  }
+
+  /// The padding offset from the top.
+  double get topPadding {
+    try {
+      _mediaQuery = MediaQuery.of(_context);
+      return _mediaQuery.padding.top;
+    } catch (e) {
+      throw errorMessage;
+    }
   }
 }

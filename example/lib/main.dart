@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:response/response.dart';
 
-void main() => runApp(MyApp());
-
 var response = ResponseUI();
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -12,10 +12,23 @@ class MyApp extends StatelessWidget {
     //the general context of the app
     //Both Child and Context is required to initialize the config process
     return Response(
-      originalScreenHeight: 759,
-      originalScreenWidth: 392,
       child: MaterialApp(
         home: HomePage(),
+      ),
+    );
+  }
+}
+
+//To use the [MediaQuery Functions]
+class MyApp2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    //initializing Our Package to get data and process them from
+    //the general context of the app
+    //Both Child and Context is required to initialize the config process
+    return MaterialApp(
+      home: Response(
+        child: HomePage(),
       ),
     );
   }
@@ -59,7 +72,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: response.setHeight(30),
+                height: response.setHeight(20),
               ),
               Text(
                 'This is a Test Text',
@@ -68,6 +81,19 @@ class HomePage extends StatelessWidget {
                   fontSize: response.setHeight(24),
                   // fontSize: 24,
                   fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: response.setHeight(20),
+              ),
+              Text(
+                'Testing new Feature',
+                style: TextStyle(
+                  //we have defined a fixed font size in pixels
+                  fontSize: (24.0).asFontSize,
+                  // fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
                 ),
               ),
               RichText(
@@ -96,7 +122,7 @@ class HomePage extends StatelessWidget {
               SizedBox(height: response.setHeight(20)),
               Container(
                 height: response.setHeight(50),
-                width: response.setWidth(200),
+                width: 200.0.asWidth,
                 child: RaisedButton.icon(
                   color: Colors.teal,
                   onPressed: () {
@@ -105,11 +131,12 @@ class HomePage extends StatelessWidget {
                     //checking whether our current working device is in Portrait orientation as a Mobile Phone device
                     //(Not a Tablet) or not.
                     print("inMobilePortrait: ${response.inMobilePortrait}");
+                    // print("screenPixelRatio: ${response.screenPixelRatio}");
                   },
                   icon: Icon(
                     Icons.info,
                     color: Colors.white,
-                    size: response.setHeight(20),
+                    size: (20).asHeight,
                   ),
                   label: Text(
                     'Orientation State',
