@@ -19,6 +19,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//To use the [MediaQuery Functions]
+class MyApp2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    //initializing Our Package to get data and process them from
+    //the general context of the app
+    //Both Child and Context is required to initialize the config process
+    return MaterialApp(
+      home: Response(
+        child: HomePage(),
+      ),
+    );
+  }
+}
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -68,6 +83,19 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              SizedBox(
+                height: response.setHeight(20),
+              ),
+              Text(
+                'Testing new Feature',
+                style: TextStyle(
+                  //we have defined a fixed font size in pixels
+                  fontSize: (24.0).asFontSize,
+                  // fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+              ),
               RichText(
                 text: TextSpan(
                   children: [
@@ -94,7 +122,7 @@ class HomePage extends StatelessWidget {
               SizedBox(height: response.setHeight(20)),
               Container(
                 height: response.setHeight(50),
-                width: response.setWidth(200),
+                width: 200.0.asWidth,
                 child: RaisedButton.icon(
                   color: Colors.teal,
                   onPressed: () {
@@ -103,8 +131,7 @@ class HomePage extends StatelessWidget {
                     //checking whether our current working device is in Portrait orientation as a Mobile Phone device
                     //(Not a Tablet) or not.
                     print("inMobilePortrait: ${response.inMobilePortrait}");
-//                    print("Top Padding: ${response.bottomPadding}");
-                    print(MediaQuery.of(context).size.height);
+                    // print("screenPixelRatio: ${response.screenPixelRatio}");
                   },
                   icon: Icon(
                     Icons.info,

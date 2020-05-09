@@ -27,8 +27,10 @@ Flutter UI package which will help you to build your responsive UI design as you
 ```
 > **Note:** Responsive needs to be at the top of your **Widget Tree** to be able to work and rebulid the widgets to a new size as the device display changes.
 
+> **Note:** if you want to use any functions features related to `MediaQuery` you **must** change the order to make the `Response` widget a child to the `MaterialApp` widget.
+
 **Second**
-declare an instance `response` of `ResponseUI()` class.
+declare an instance `response` of `ResponseUI()` class at the top of your file.
 
 ```dart
 ResponseUI response = ResponseUI();
@@ -47,7 +49,10 @@ to use the package on your widget you have 4 easy to use methods:
 | `response.isDevicePortrait` | Helpful if you want to know whether the device orientation is in Portrait or in Landscape.  |
 | `response.inMobilePortrait` | Helps you if you want to know whether the device you are working on a Mobile Portrait (returns `true`) or a Tablet Portrait mode (returns `false`).  |
 | `response.screenWidth` | returns the current device screen width as of type `double`. |
-| `response.screenHeight` | returns the current device screen height as of type `double`. |
+| `response.screenPixelRatio` | returns the current device screen ratio. (using `MediaQuery`)|
+| `response.textScaleFactor` | returns the font scalling factore as of type `double`. (using `MediaQuery`)|
+| `response.bottomPadding` | returns the current device screen padding offset from the bottom. (using `MediaQuery`)|
+| `response.topPadding` | returns the current device screen padding offset from the top. (using `MediaQuery`)|
 
 > ***Note:*** `isDevicePortrait` and `inMobilePortrait` returns a `bool` (true or false) with which you can know the current orientation state of
 your device.
@@ -63,8 +68,23 @@ to set a width and height to for example a Container.
         color: Colors.teal,
        )
 ```
+**OR**
+
+> ***Only*** for version 2.6.0 or above
+
+```dart
+//We want the Container Widget to be 200px in width and 200px in height
+    Container(
+        width: (300).asWidth, //setting the Container width to be 300px
+        height: 200.0.asHieght, //setting the Container height to be 300px
+        color: Colors.teal,
+       )
+```
+
 > ***Note:*** the scaling process will work also in the same device in both
 in Portrait mode or in Landscape mode.
+
+
 
 ### Text Size
 to set the text size.
@@ -78,6 +98,19 @@ to set the text size.
     ),
 )
 ```
+
+**OR**
+
+> ***Only*** for version 2.6.0 or above
+
+```dart
+    Text(
+        'This is a Test Text',
+        style: TextStyle(
+           fontSize: 24.0.asFontSize, //defined a fixed font size in pixels
+           fontWeight: FontWeight.bold,
+    ),
+)
 
 ### Getting Screen Width & Height
 
@@ -98,14 +131,12 @@ to set the text size.
         fontSize: response.setFontSize(18),
       ),
     ),
-  ],
-),
 ```
 
 ## Contributions
 
 If you feel like you can contribute to make the package much better and more useful for other
-developers, don't hesitate to `fork` the repo and `push` your changes.
+developers, don't hesitate to `fork` the repo and make `pull request` to your changes.
 
 Source code on Github: [here](https://github.com/AhmedAbouelkher/Responsive-for-Flutter "here")
 

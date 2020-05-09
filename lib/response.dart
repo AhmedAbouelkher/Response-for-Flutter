@@ -4,8 +4,13 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 extension SizeExtension on num {
+  ///`asWidth` is used to set that fixed [width] ratio across all screen sizes
   num get asWidth => ResponseUI().setWidth(this * 1.0);
+
+  ///`asHeight` is used to set that fixed [height] ratio across all screen sizes
   num get asHeight => ResponseUI().setHeight(this * 1.0);
+
+  ///`asFontSize` is used to set that fixed [font size] ratio across all screen sizes
   double get asFontSize => ResponseUI().setFontSize(this * 1.0);
 }
 
@@ -57,7 +62,8 @@ class Response extends StatelessWidget {
   ///`child` is the child widget in which we want to use our package
   ///
   ///`child` must be in the top of our (Widget Tree) to work properly.
-  ///You can say that your [child] widget is always will be our [MaterialApp]
+  ///You can say that your `child` widget is always will be our `MaterialApp` or the [home] widget
+  ///if you wanted to use the `MediaQuery` related functions with this package
   ///
   ///`child` is a requirement to enable the package to work.
   ///
@@ -69,16 +75,15 @@ class Response extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ///[LayoutBuilder] is used to get the constraints/borders geometry of
+    ///`LayoutBuilder` is used to get the constraints/borders geometry of
     ///the device screen in which the app is working on.
     return LayoutBuilder(
       builder: (context, constraints) {
-        ///[OrientationBuilder] is used to get the orientation mode of
+        ///`OrientationBuilder` is used to get the orientation mode of
         ///the device in which the app is working on.
         return OrientationBuilder(
-          builder: (BuildContext context, Orientation orientation) {
-            ///initializing our brain
-            ResponseUI()._init(constraints, orientation, originalScreenHeight,
+          builder: (context, orientaton) {
+            ResponseUI._()._init(constraints, orientaton, originalScreenHeight,
                 originalScreenWidth, context);
             return child;
           },
@@ -86,9 +91,6 @@ class Response extends StatelessWidget {
       },
     );
   }
-
-  static bool _isPortrait = true;
-  static bool get isDevicePortrait => _isPortrait;
 }
 
 ///
@@ -122,6 +124,8 @@ class ResponseUI {
   static double _fixedWidthFactor = 0;
   static double _originalWidth = 0;
   static double _originalHeight = 0;
+  static BuildContext _context;
+  MediaQueryData _mediaQuery;
 
   ResponseUI._();
   factory ResponseUI() {
@@ -130,7 +134,7 @@ class ResponseUI {
 
   void _init(BoxConstraints constraints, Orientation orientation,
       double originalHeight, double originalWidth, BuildContext context) {
-//    _originalHeight = originalHeight;
+    _originalHeight = originalHeight;
     _originalWidth = originalWidth;
 
     if (_instance == null) {
@@ -153,6 +157,9 @@ class ResponseUI {
     _blockWidth = _screenWidth / 100;
     fixedHeightFactor = originalHeight / 100;
     _fixedWidthFactor = originalWidth / 100;
+
+    //! Testing/Beta version
+    _context = context;
   }
 
   ///`isDevicePortrait` is helpful if you want to know whether the device orientation is
@@ -249,5 +256,61 @@ class ResponseUI {
       _heightCorrectionFactor /= 1.2;
     }
     return ((fontSize / _heightCorrectionFactor) * _blockHeight);
+  }
+
+  final String errorMessage = '''couldn't find context
+Context can't equal 'null'
+if you want to use any `MediaQuery` related functions, you should set the `Response` widget as a child (home) to the `MaterialApp` widget''';
+
+  ///`screenPixelRatio` is a `MediaQuery` function.
+  /// The number of device pixels for each logical pixel. This number might not
+  /// be a power of two. Indeed, it might not even be an integer. For example,
+  /// the Nexus 6 has a device pixel ratio of 3.5.
+  double get screenPixelRatio {
+    try {
+      _mediaQuery = MediaQuery.of(_context);
+      return _mediaQuery.devicePixelRatio;
+    } catch (e) {
+      throw errorMessage;
+    }
+  }
+
+  /// The number of font pixels for each logical pixel.
+  ///
+  /// For example, if the text scale factor is 1.5, text will be 50% larger than
+  /// the specified font size.
+  ///
+  /// See also:
+  ///
+  ///  * [MediaQuery.textScaleFactorOf], a convenience method which returns the
+  ///    textScaleFactor defined for a [BuildContext].
+
+  double get textScaleFactor {
+    try {
+      _mediaQuery = MediaQuery.of(_context);
+      return _mediaQuery.textScaleFactor;
+    } catch (e) {
+      throw errorMessage;
+    }
+  }
+
+  /// The padding offset from the bottom.
+  double get bottomPadding {
+    try {
+      _mediaQuery = MediaQuery.of(_context);
+      return _mediaQuery.padding.bottom;
+    } catch (e) {
+      throw errorMessage;
+    }
+  }
+
+  /// The padding offset from the top.
+  double get topPadding {
+    try {
+      _mediaQuery = MediaQuery.of(_context);
+      return _mediaQuery.padding.top;
+    } catch (e) {
+      throw errorMessage;
+    }
   }
 }

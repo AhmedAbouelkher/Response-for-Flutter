@@ -1,3 +1,10 @@
+## [0.0.1+3] - 2020-5-9
+* General Bug Fixes.
+* General Performance Fixes.
+* Fix scaling problem with tablets.
+* Adding new MediaQuery related functions to decrease the developing time.
+* Adding new extension features to increase performance.
+
 ## [0.0.1+2] - 2020-4-14
 * Bug Fixes
 * General Performance Fixes.
