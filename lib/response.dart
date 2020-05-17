@@ -1,18 +1,7 @@
 library response;
 
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-
-extension SizeExtension on num {
-  ///`asWidth` is used to set that fixed [width] ratio across all screen sizes
-  num get asWidth => ResponseUI().setWidth(this * 1.0);
-
-  ///`asHeight` is used to set that fixed [height] ratio across all screen sizes
-  num get asHeight => ResponseUI().setHeight(this * 1.0);
-
-  ///`asFontSize` is used to set that fixed [font size] ratio across all screen sizes
-  double get asFontSize => ResponseUI().setFontSize(this * 1.0);
-}
+import 'package:flutter/material.dart';
 
 class Response extends StatelessWidget {
   ///[Response] is an initialization Class for the whole package.
@@ -314,3 +303,14 @@ if you want to use any `MediaQuery` related functions, you should set the `Respo
     }
   }
 }
+
+// extension SizeExtension on num {
+//   ///`asWidth` is used to set that fixed [width] ratio across all screen sizes
+//   num get asWidth => ResponseUI().setWidth(this * 1.0);
+
+//   ///`asHeight` is used to set that fixed [height] ratio across all screen sizes
+//   num get asHeight => ResponseUI().setHeight(this * 1.0);
+
+//   ///`asFontSize` is used to set that fixed [font size] ratio across all screen sizes
+//   double get asFontSize => ResponseUI().setFontSize(this * 1.0);
+// }
