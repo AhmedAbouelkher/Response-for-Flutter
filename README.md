@@ -68,7 +68,7 @@ to set a width and height to for example a Container.
         color: Colors.teal,
        )
 ```
-**OR**
+<!-- **OR**
 
 > ***Only*** for version 2.6.0 or above
 
@@ -79,7 +79,7 @@ to set a width and height to for example a Container.
         height: 200.0.asHieght, //setting the Container height to be 300px
         color: Colors.teal,
        )
-```
+``` -->
 
 > ***Note:*** the scaling process will work also in the same device in both
 in Portrait mode or in Landscape mode.
@@ -99,7 +99,7 @@ to set the text size.
 )
 ```
 
-**OR**
+<!-- **OR**
 
 > ***Only*** for version 2.6.0 or above
 
@@ -111,7 +111,7 @@ to set the text size.
            fontWeight: FontWeight.bold,
     ),
 )
-```
+``` -->
 
 ### Getting Screen Width & Height
 
