@@ -1,3 +1,7 @@
+## [0.1.1] - 2020-5-30
+* General Bug Fixes.
+* General Performance improvments.
+
 ## [0.1.0] - 2020-5-17
 * General Bug Fixes.
 

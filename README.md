@@ -33,7 +33,7 @@ Flutter UI package which will help you to build your responsive UI design as you
 declare an instance `response` of `ResponseUI()` class at the top of your file.
 
 ```dart
-ResponseUI response = ResponseUI();
+final response = ResponseUI.instance;
 ``` 
 
 And that is all to be able to initialize the package, **Very easy!**

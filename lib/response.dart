@@ -72,7 +72,7 @@ class Response extends StatelessWidget {
         ///the device in which the app is working on.
         return OrientationBuilder(
           builder: (context, orientaton) {
-            ResponseUI._()._init(constraints, orientaton, originalScreenHeight,
+            ResponseUI._init(constraints, orientaton, originalScreenHeight,
                 originalScreenWidth, context);
             return child;
           },
@@ -116,19 +116,21 @@ class ResponseUI {
   static BuildContext _context;
   MediaQueryData _mediaQuery;
 
-  ResponseUI._();
-  factory ResponseUI() {
+  static ResponseUI get instance {
+    if (_instance == null) {
+      _instance = ResponseUI();
+    }
     return _instance;
   }
 
-  void _init(BoxConstraints constraints, Orientation orientation,
+  static void _init(BoxConstraints constraints, Orientation orientation,
       double originalHeight, double originalWidth, BuildContext context) {
     _originalHeight = originalHeight;
     _originalWidth = originalWidth;
 
-    if (_instance == null) {
-      _instance = ResponseUI._();
-    }
+    // if (_instance == null) {
+    //   _instance = ResponseUI._();
+    // }
     if (orientation == Orientation.portrait) {
       _screenWidth = constraints.maxWidth;
       _screenHeight = constraints.maxHeight;
