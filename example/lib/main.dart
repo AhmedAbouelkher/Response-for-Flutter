@@ -38,6 +38,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.dark,
         backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
@@ -82,7 +83,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: response.setHeight(20),
+                height: (20).asHeight(context),
               ),
               Text(
                 'Testing new Feature',
@@ -98,8 +99,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     TextSpan(
                       //we are getting back our current device screen height in pixels.
-                      text:
-                          '\nScreen Height: ${response.screenHeight.floor()}px\n',
+                      text: '\nScreen Height: ${response.screenHeight!.floor()}px\n',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: response.setFontSize(18),
@@ -107,7 +107,7 @@ class HomePage extends StatelessWidget {
                     ),
                     TextSpan(
                       //we are getting back our current device screen width in pixels.
-                      text: 'Screen Width: ${response.screenWidth.floor()}px',
+                      text: 'Screen Width: ${response.screenWidth!.floor()}px',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: response.setFontSize(18),
@@ -120,8 +120,10 @@ class HomePage extends StatelessWidget {
               Container(
                 height: response.setHeight(50),
                 width: response.setWidth(200),
-                child: RaisedButton.icon(
-                  color: Colors.teal,
+                child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.teal,
+                  ),
                   onPressed: () {
                     //checking whether our current working device is in Portrait orientation or not.
                     print("isDevicePortrait: ${response.isDevicePortrait}");

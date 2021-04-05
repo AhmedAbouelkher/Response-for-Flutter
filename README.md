@@ -68,18 +68,18 @@ to set a width and height to for example a Container.
         color: Colors.teal,
        )
 ```
-<!-- **OR**
+**OR**
 
 > ***Only*** for version 2.6.0 or above
 
 ```dart
 //We want the Container Widget to be 200px in width and 200px in height
     Container(
-        width: (300).asWidth, //setting the Container width to be 300px
-        height: 200.0.asHieght, //setting the Container height to be 300px
+        width: (300.0).asWidth(context), //setting the Container width to be 300px
+        height: (200.0).asHieght(context), //setting the Container height to be 300px
         color: Colors.teal,
        )
-``` -->
+```
 
 > ***Note:*** the scaling process will work also in the same device in both
 in Portrait mode or in Landscape mode.
@@ -99,19 +99,19 @@ to set the text size.
 )
 ```
 
-<!-- **OR**
+**OR**
 
-> ***Only*** for version 2.6.0 or above
+> ***Only*** for Flutter version 2.6.0 or above
 
 ```dart
     Text(
         'This is a Test Text',
         style: TextStyle(
-           fontSize: 24.0.asFontSize, //defined a fixed font size in pixels
+           fontSize: (24.0).asFontSize(context), //defined a fixed font size in pixels
            fontWeight: FontWeight.bold,
     ),
 )
-``` -->
+```
 
 ### Getting Screen Width & Height
 

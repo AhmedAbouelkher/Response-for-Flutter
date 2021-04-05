@@ -1,3 +1,9 @@
+## [1.0.1] - 2021-4-6
+* `Response` is now full `null-safe` 🎉🎉.
+* Add new extensions `asHeight`, `asWidth` and `asFontSize` on `num` class.
+* General Bug Fixes.
+
+
 ## [0.1.1] - 2020-5-30
 * General Bug Fixes.
 * General Performance improvments.
