@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:response/response.dart';
 
-var response = ResponseUI();
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -35,6 +33,7 @@ class MyApp2 extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  final response = ResponseUI.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +78,6 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(
                   //we have defined a fixed font size in pixels
                   fontSize: response.setHeight(24),
-                  // fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -90,8 +88,7 @@ class HomePage extends StatelessWidget {
                 'Testing new Feature',
                 style: TextStyle(
                   //we have defined a fixed font size in pixels
-                  fontSize: (24.0).asFontSize,
-                  // fontSize: 24,
+                  fontSize: response.setFontSize(24),
                   fontWeight: FontWeight.bold,
                   color: Colors.teal,
                 ),
@@ -122,7 +119,7 @@ class HomePage extends StatelessWidget {
               SizedBox(height: response.setHeight(20)),
               Container(
                 height: response.setHeight(50),
-                width: 200.0.asWidth,
+                width: response.setWidth(200),
                 child: RaisedButton.icon(
                   color: Colors.teal,
                   onPressed: () {
@@ -136,7 +133,7 @@ class HomePage extends StatelessWidget {
                   icon: Icon(
                     Icons.info,
                     color: Colors.white,
-                    size: (20).asHeight,
+                    size: response.setHeight(20),
                   ),
                   label: Text(
                     'Orientation State',

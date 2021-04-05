@@ -1,18 +1,7 @@
 library response;
 
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-
-extension SizeExtension on num {
-  ///`asWidth` is used to set that fixed [width] ratio across all screen sizes
-  num get asWidth => ResponseUI().setWidth(this * 1.0);
-
-  ///`asHeight` is used to set that fixed [height] ratio across all screen sizes
-  num get asHeight => ResponseUI().setHeight(this * 1.0);
-
-  ///`asFontSize` is used to set that fixed [font size] ratio across all screen sizes
-  double get asFontSize => ResponseUI().setFontSize(this * 1.0);
-}
+import 'package:flutter/material.dart';
 
 class Response extends StatelessWidget {
   ///[Response] is an initialization Class for the whole package.
@@ -83,7 +72,7 @@ class Response extends StatelessWidget {
         ///the device in which the app is working on.
         return OrientationBuilder(
           builder: (context, orientaton) {
-            ResponseUI._()._init(constraints, orientaton, originalScreenHeight,
+            ResponseUI._init(constraints, orientaton, originalScreenHeight,
                 originalScreenWidth, context);
             return child;
           },
@@ -127,19 +116,21 @@ class ResponseUI {
   static BuildContext _context;
   MediaQueryData _mediaQuery;
 
-  ResponseUI._();
-  factory ResponseUI() {
+  static ResponseUI get instance {
+    if (_instance == null) {
+      _instance = ResponseUI();
+    }
     return _instance;
   }
 
-  void _init(BoxConstraints constraints, Orientation orientation,
+  static void _init(BoxConstraints constraints, Orientation orientation,
       double originalHeight, double originalWidth, BuildContext context) {
     _originalHeight = originalHeight;
     _originalWidth = originalWidth;
 
-    if (_instance == null) {
-      _instance = ResponseUI._();
-    }
+    // if (_instance == null) {
+    //   _instance = ResponseUI._();
+    // }
     if (orientation == Orientation.portrait) {
       _screenWidth = constraints.maxWidth;
       _screenHeight = constraints.maxHeight;
@@ -314,3 +305,14 @@ if you want to use any `MediaQuery` related functions, you should set the `Respo
     }
   }
 }
+
+// extension SizeExtension on num {
+//   ///`asWidth` is used to set that fixed [width] ratio across all screen sizes
+//   num get asWidth => ResponseUI().setWidth(this * 1.0);
+
+//   ///`asHeight` is used to set that fixed [height] ratio across all screen sizes
+//   num get asHeight => ResponseUI().setHeight(this * 1.0);
+
+//   ///`asFontSize` is used to set that fixed [font size] ratio across all screen sizes
+//   double get asFontSize => ResponseUI().setFontSize(this * 1.0);
+// }
